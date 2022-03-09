@@ -1,10 +1,11 @@
-const {Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const axios = require('axios');
+require('dotenv').config();
 const { APIKEY } = process.env;
 const { Recipe, Diet } = require('../db')
 
 
-const getIdApi = async(id) => {
+const getIdApi = async (id) => {
     try {
         const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${APIKEY}`);
         const e = apiUrl.data;
@@ -17,8 +18,8 @@ const getIdApi = async(id) => {
             healthScore: e.healthScore,
             servings: e.servings,
             image: e.image,
-            diets: e.diets.map( (e) => {return {name: e}}),
-            steps: e.analyzedInstructions[0]?.steps.map((e) => {return e.step})
+            diets: e.diets.map((e) => { return { name: e } }),
+            steps: e.analyzedInstructions[0]?.steps.map((e) => { return e.step })
         };
 
     } catch (error) {
@@ -28,10 +29,10 @@ const getIdApi = async(id) => {
 
 };
 
-const getIdDb = async(id) => {
+const getIdDb = async (id) => {
     try {
         const dbId = await Recipe.findByPk(id, {
-            include:{
+            include: {
                 model: Diet,
                 attributes: ["dietType"],
                 through: {
@@ -39,16 +40,16 @@ const getIdDb = async(id) => {
                 }
             }
         });
-        
+
         return dbId;
 
     } catch (error) {
-        console.log(error) 
+        console.log(error)
     }
 };
 
-const getIdAll = async(id) => {
-    const idApi =  getIdApi(id);
+const getIdAll = async (id) => {
+    const idApi = getIdApi(id);
     const idDb = getIdDb(id);
     const [Api, Db] = await Promise.all([idApi, idDb]);
     return Api || Db;

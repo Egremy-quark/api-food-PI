@@ -1,5 +1,6 @@
-const {Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const axios = require('axios');
+require('dotenv').config();
 const { APIKEY } = process.env;
 const { Recipe, Diet } = require('../db')
 
@@ -9,10 +10,10 @@ En este archivo haremos el requerimiento de la información de nuestra API
 
 const getApiInfo = async () => {
     try {
-        const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=d5c50438aee0420487fd3ada80f2adcd&addRecipeInformation=true&number=100`)
+        const getUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&addRecipeInformation=true&number=100`)
 
         const getInfo = getUrl.data?.results.map(e => {
-                return {
+            return {
                 id: e.id,
                 title: e.title,
                 summary: e.summary,
@@ -20,12 +21,12 @@ const getApiInfo = async () => {
                 healthScore: e.healthScore,
                 servings: e.servings,
                 image: e.image,
-                diets: e.diets.map( (e) => {return {name: e}}),
-                steps: e.analyzedInstructions[0]?.steps.map((e) => {return e.step})
+                diets: e.diets.map((e) => { return { name: e } }),
+                steps: e.analyzedInstructions[0]?.steps.map((e) => { return e.step })
             }
         });
 
-            return getInfo
+        return getInfo
     } catch (error) {
         console.log(error)
     }
@@ -41,7 +42,7 @@ const getDataBaseInfo = async () => {
                     attributes: []
                 }
             }
-        }); 
+        });
     } catch (error) {
         console.log(error)
     }

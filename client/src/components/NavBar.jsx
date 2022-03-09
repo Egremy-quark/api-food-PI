@@ -1,20 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import styles from "./NavBar.module.css"
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getRecipeName, getRecipes } from '../redux/actions/index'
 
-const NavBar = () => {
+export default function NavBar({ page }) {
+    const dispatch = useDispatch()
+    const [title, setTitle] = useState("")
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setTitle(e.target.value)
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        page(1)
+        dispatch(getRecipeName(title))
+    }
+
+    const handleClickReset = (e) => {
+        e.preventDefault();
+        page(1)
+        dispatch(getRecipes())
+    }
+
     return (
-        <ul>
-            <li>
-                <Link to='/home'>Home</Link>
-            </li>
+        <div>
+            <nav>
+                <input type='text' placeholder='Search recipe by name' onChange={(e) => handleChange(e)}></input>
+                <button type='submit' onClick={(e) => handleClick(e)}>Search</button>
 
-            <li>
-                <Link to='/create'>Create your own recipe!</Link>
-            </li>
-        </ul>
+                <button type='reset' onClick={(e) => handleClickReset(e)}>Restart</button>
+            </nav>
+        </div >
     )
 }
-
-
-export default NavBar

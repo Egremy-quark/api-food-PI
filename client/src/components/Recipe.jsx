@@ -1,21 +1,35 @@
 import React from 'react';
-import styles from './Recipe.module.css';
 
-const Recipe = ({ title, diets, image, spoonacularScore, servings, dishTypes }) => {
+
+const Recipe = ({ title, diets, image, points, healthScore }) => {
     return (
-        <div class={styles.card}>
+        <div>
+            <img src={image} alt="Img not found" />
+            <div>
+                <h2 >{title}</h2>
+                <ul>Diets: {diets.map((e) => {
+                    return <li key={e.name}>
+                        {e.name}
+                    </li>
+                })}
+                </ul>
 
-            <img src={image} alt="Img not found" className={styles.img} />
-
-            <div class={styles.card_text}>
-                <h2 className={styles.title}>{title}</h2>
-                <p className={styles.ps}>Diets: {diets}</p>
-                <p className={styles.ps}>Dish Type: {dishTypes}</p>
-                <p className={styles.ps}>{spoonacularScore}</p>
-                <p className={styles.ps}>{servings}</p>
+                <p >Points: {points}</p>
+                <p >Healt: {healthScore}</p>
             </div>
         </div>
     )
 }
 
 export default Recipe
+
+/*
+                <Recipe
+                    title={e.title}
+                    healthScore={e.healthScore}
+                    spoonacularScore={e.spoonacularScore}
+                    image={e.image}
+                    diets={e.diets}
+                />
+*/
+

@@ -17,15 +17,15 @@ const router = Router();
 router.get('/', async (req, res) => { 
     try {
         const { name } = req.query  
-        const recipes = await getAllInfo() //Generamos la petición después de comprobar los datos
-        // console.log(recipes)
         if (name) {
-            // console.log(name)
+            const recipes = await getAllInfo() //Generamos la petición después de comprobar los datos
+            console.log(name)
             const existName = recipes.filter(e => e.title?.toLowerCase().includes(name.toLowerCase())) 
             existName.length 
                 ? res.status(200).json(existName) 
                 : res.status(404).send('No se encontro una receta con ese nombre')
         } else{
+            const recipes = await getAllInfo()
             res.status(200).json(recipes)
         }
         // res.status(404).send('No se ingreso un nombre')

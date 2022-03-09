@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // El provider siempre va con nuestro store
 import { Provider } from 'react-redux';
-import { store } from './Store/index'
+import { store } from './redux/store/index'
 
 ReactDOM.render(
   <Provider store={store}>
