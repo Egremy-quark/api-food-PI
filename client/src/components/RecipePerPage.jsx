@@ -8,7 +8,7 @@ export default function RecipePerPage({ recipesCopied, currentPage }) {
     return (
         <>
             {console.log(pagesRecipes)}
-            <div>
+            <div className='cards-container'>
                 {pagesRecipes && pagesRecipes.map((e) => {
                     return <Recipe
                         title={e.title}
@@ -17,6 +17,7 @@ export default function RecipePerPage({ recipesCopied, currentPage }) {
                         image={e.image}
                         diets={e.diets}
                         key={e.id}
+                        id={e.id}
                     />
                 })}
             </div>

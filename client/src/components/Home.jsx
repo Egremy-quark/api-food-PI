@@ -4,11 +4,12 @@ import { getDiets, getRecipes } from "../redux/actions/index.js";
 import Paginado from "./Paginado.jsx";
 import RecipePerPage from './RecipePerPage.jsx'
 import NavBar from "./NavBar.jsx";
-import OrderByName from "./OrderByName.jsx";
-import OrderByScore from "./OrderByScore.jsx";
+import Filters from "./Filters.jsx";
+import elTrucoDelAlmendruco from "../elTrucoDelAlmendruco.js";
 
 
 export default function Home() {
+    // const recipesCopied = elTrucoDelAlmendruco;
     const dispatch = useDispatch()
     const recipesCopied = useSelector(state => state.copyRecipes)
     const [currentPage, setCurrentPage] = useState(1)
@@ -30,17 +31,16 @@ export default function Home() {
 
 
     return (
-        <div>
-            <div>
+        <div className="home">
+            <div >
                 <NavBar
                     page={page}
                 />
             </div>
             <div>
-                <OrderByName
+                <Filters
                     ordered={ordered}
                 />
-                <OrderByScore />
             </div>
             <div>
                 <RecipePerPage

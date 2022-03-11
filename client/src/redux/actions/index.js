@@ -47,7 +47,7 @@ export const orderByName = (payload) => {
 export const getDetails = (id) => {
     return async (dispatch) => {
         try {
-            let aboutRecipe = await axios.get(`http://localhost:3001/recipes${id}`);
+            let aboutRecipe = await axios.get(`http://localhost:3001/recipes/${id}`);
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: aboutRecipe.data
@@ -69,3 +69,23 @@ export function getRecipeName(name) {
     }
 }
 
+export const filterByScore = (payload) => {
+    return {
+        type: 'ORDER_BY_SCORE',
+        payload
+    }
+}
+
+export const postRecipe = (payload) => {
+    return async function (dispatch) {
+        let recipeDb = await axios.post('/recipe', payload)
+        return recipeDb
+    }
+}
+
+export const filterPost = (payload) => {
+    return {
+        type: 'FILTER_POST',
+        payload
+    }
+}
