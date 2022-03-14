@@ -31,6 +31,7 @@ function rootReducer(state = initialState, action) {
                 diets: action.payload
             }
         case 'GET_DETAILS':
+
             return {
                 ...state,
                 detail: action.payload

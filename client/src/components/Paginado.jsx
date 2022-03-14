@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Pagination({ recipesCopied, page }) {
     let pages = []
-    for (let i = 1; i < Math.ceil(recipesCopied / 9); i++) {
+    for (let i = 1; i < Math.ceil(recipesCopied / 9) + 1; i++) {
         pages.push(i) // pages[1,2,3,4,5,6,7,8,9,10,11]
     }
 

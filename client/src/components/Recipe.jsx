@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom'
 
 
 const Recipe = ({ title, diets, image, points, healthScore, id, madeOnDb }) => {
+    let bool = false
+    console.log(diets)
+
+    bool = diets.map((e) => {
+        if (e.hasOwnProperty('dietType')) return true;
+        return false
+    })
+    console.log(bool)
+
     return (
         <div className='card'>
             {/* {console.log(id)} */}
@@ -34,24 +43,21 @@ const Recipe = ({ title, diets, image, points, healthScore, id, madeOnDb }) => {
                         </div>
                     </div>
                     <h2 >{title}</h2>
-                    {/* {
-                        madeOnDb ?
-                            <ul>
-                                {diets.map((e, i) => {
-                                    return <li key={i.toString()}>
-                                        {e.dietType}
-                                    </li>
-                                })}
-                            </ul>
-                            :
-                            <ul>
-                                {diets.map((e, i) => {
-                                    return <li key={i.toString()}>
-                                        {e}
-                                    </li>
-                                })}
-                            </ul>
-                    } */}
+                    {
+                        (bool[0])
+                            ? diets.map((e) => {
+                                console.log(e)
+                                return <p key={e.id}>
+                                    {e.dietType}
+                                </p>
+                            })
+                            : diets.map((e, i) => {
+                                console.log(e)
+                                return <p key={i}>
+                                    {e}
+                                </p>
+                            })
+                    }
 
                 </div>
                 <div className="moreinfo">
