@@ -30,24 +30,26 @@ export default function Filters({ ordered }) {
         <div className='filtros'>
             <div className='order'>
                 <select onChange={(e) => handleOrderName(e)} className='order__select'>
-                    <option >Order by</option>
+                    <option >Alphabet order</option>
                     <option value='asc'>Ascendent</option>
                     <option value='des'>Descendent</option>
                 </select>
 
-                <select onChange={(e) => handleDiets(e)} className='order__diets'>
+                <select onChange={(e) => handleDiets(e)} className='order__select'>
+                    <option>Diet filter</option>
                     <option value='all'>All diets</option>
                     {selectDiet.map((e, i) => {
                         // console.log(e.dietType)
                         return (
-                            <option option key={i.toString()} value={e.dietType} >
+                            <option key={i.toString()} value={e.dietType} >
                                 {e.dietType}
                             </option>
                         )
                     })}
                 </select>
 
-                <select onChange={(e) => handleScore(e)} className='order__score'>
+                <select onChange={(e) => handleScore(e)} className='order__select'>
+                    <option>Score order</option>
                     <option value='descore'>Ascendent</option>
                     <option value='asc'>Descendent</option>
                 </select>

@@ -14,7 +14,8 @@ export default function RecipeDetails() {
 
     useEffect(() => {
         dispatch(getDetails(recipeId.id))
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch])
 
     return (
         <div>
@@ -32,28 +33,21 @@ export default function RecipeDetails() {
                             <div>
                                 <h1>{newRecipe.title}</h1>
                                 <h5><span>Diet Type:</span></h5>
-                                <p>
-                                    {newRecipe.diets?.map((r, i) => (
-                                        <li key={i.toString()}>
-                                            {r.name}
-                                        </li>
-                                    ))}
+                                <p>{newRecipe.diets?.map((r, i) => (
+                                    <li key={i.toString()}> {r.name}</li>
+                                ))}
                                 </p>
-                                <h5>
-                                    <span>Servings:</span>{newRecipe.servings}
-                                </h5>
-                                <h5>
-                                    <span>Spoonacular Score:</span>{newRecipe.points}
-                                </h5>
-                                <h5>
-                                    <span>Health Score:</span>{newRecipe.healthScore}
-                                </h5>
-                                <h5>
-                                    <span>Summary:</span>{newRecipe.summary}
-                                </h5>
-                                <h5>
-                                    <span>Instructions:</span>{newRecipe.steps}
-                                </h5>
+                                <h5> <span>Servings:</span>{newRecipe.servings} </h5>
+                                <h5> <span>Spoonacular Score:</span>{newRecipe.points} </h5>
+                                <h5> <span>Health Score:</span>{newRecipe.healthScore} </h5>
+                                <h5> <span>Summary:</span>{newRecipe.summary} </h5>
+                                <h5> <span>Instructions:</span>{newRecipe.steps} </h5>
+                                <p>{newRecipe.steps?.lenght === 0 ?
+                                    <p>No hay pasos para esta receta</p>
+                                    : newRecipe.steps?.map((e, i) => {
+                                        return <p key={i}><span>Paso {i + 1}:</span> {e}</p>
+                                    })}
+                                </p>
                             </div>
 
                         </div>

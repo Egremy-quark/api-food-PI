@@ -20,8 +20,9 @@ const getApiInfo = async () => {
                 points: e.spoonacularScore,
                 healthScore: e.healthScore,
                 servings: e.servings,
+                madeOnDb: false,
                 image: e.image,
-                diets: e.diets.map((e) => { return { name: e } }),
+                diets: e.diets,
                 steps: e.analyzedInstructions[0]?.steps.map((e) => { return e.step })
             }
         });
@@ -61,6 +62,8 @@ const getAllInfo = async () => {
     const getDb = await getDataBaseInfo()
     const allInfo = getApi.concat(getDb) //[...getApi, ...getDb]
     return allInfo
+    // return getApi
+
 }
 
 module.exports = {

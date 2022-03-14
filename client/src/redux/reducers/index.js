@@ -9,6 +9,17 @@ function rootReducer(state = initialState, action) {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case 'GET_RECIPES':
+            // for (let i = 0; i < action.payload.length; i++) {
+
+            //     if (action.payload[i].madeOnDb) {
+            //         console.log(action.payload[i])
+            //         let arrDiets = action.payload.diets.split(',')
+            //         console.log(arrDiets)
+            //         action.payload.diets = arrDiets
+            //     }
+            // }
+            // MadeOnDb
+            console.log(action.payload)
             return {
                 ...state,
                 recipes: action.payload,
@@ -29,10 +40,17 @@ function rootReducer(state = initialState, action) {
             const dietsPostFilter = action.payload === "all" ? recipes :
                 // eslint-disable-next-line array-callback-return
                 recipes.filter(r => {
-                    let dietType = r.diets.map(d => d.name)
-                    if (dietType.includes(action.payload)) return r
+                    // console.log(r.diets)
+                    let dietType = r.diets.map(d => {
+                        // console.log(d.name)
+                        return d.name
+                    })
+                    // console.log(dietType)
+                    if (dietType.includes(action.payload))
+                        // console.log(r)
+                        return r //Verificar si lo que pasamos por el option está dentro de cada recipe
                 })
-            console.log(dietsPostFilter)
+            // console.log(dietsPostFilter)
             return {
                 ...state,
                 copyRecipes: dietsPostFilter
@@ -45,13 +63,9 @@ function rootReducer(state = initialState, action) {
 
         case 'ORDER_BY_NAME':
             let orderList = state.copyRecipes.sort((a, b) => {
-                if (a.title.toLowerCase() > b.title.toLowerCase()) {
-                    return 1
-                } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
-                    return -1
-                } else {
-                    return 0
-                }
+                if (a.title.toLowerCase() > b.title.toLowerCase()) return 1
+                if (a.title.toLowerCase() < b.title.toLowerCase()) return -1
+                return 0
             })
             if (action.payload === 'des') { orderList = orderList.reverse() }
             return {
@@ -68,12 +82,12 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'descore') { recipesByScore = recipesByScore.reverse() }
             return {
                 ...state,
-                recipes: recipesByScore
+                copyRecipes: recipesByScore
             }
-        case 'POST_RECIPE':
-            return {
-                ...state,
-            }
+        // case 'POST_RECIPE':
+        //     return {
+        //         ...state,
+        //     }
         case 'FILTER_POST':
             let recipesCopy = [];
 

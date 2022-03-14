@@ -5,6 +5,7 @@
   --second-color: #FDD69B;
   --rounded: 50px;
   --third-color: #25252D;
+  --bc-body-color: #292D36;
 
 }
 
@@ -103,11 +104,13 @@ a {
   display: flex;
   width: 100%;
   margin-bottom: 40px;
+  
 }
 
 .order { 
   margin: auto;
-  
+  display: flex;
+  gap: 10px;
 }
 
 .order__select{
@@ -116,6 +119,7 @@ a {
   color: #292D36;
   font-weight: 500;
   outline: none;
+  border-radius: 5px;
   /* appearance: none; */
 }
 
@@ -164,7 +168,36 @@ a {
   background-color: var(--third-color);
   padding: 20px 30px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 10px;
+}
 
+.card .moreinfo{
+  text-align: center;
+  border: 1px solid var(--second-color);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  transition: 500ms;
+}
+
+.card .moreinfo:hover {
+  background-color: var(--second-color);
+
+}
+
+.card .moreinfo a{
+  transition: 500ms;
+  color: var(--second-color);
+}
+
+.card .moreinfo:hover a{
+  text-decoration: none;
+  color: var(--third-color);
 }
 
 .info__icons{
@@ -216,4 +249,138 @@ a {
 
 li {
   list-style: none;
+}
+
+/* ==================PAGINADO======================*/
+
+.paginado .lista ul{
+ display: flex;
+ justify-content: center;
+ gap: 10px; /* Este es para separar = flex || grid*/
+}
+
+.paginado .lista button{
+  width: 40px;
+  height: 40px;
+  padding-bottom: -8px;
+  background-color: var(--bc-body-color);
+  color: var(--second-color);
+  border: 1px solid var(--second-color);
+  border-radius: 5px;
+  transition: 500ms;
+  font-size: 20px;
+  cursor: pointer;
+  /* display: flex; */
+  
+}
+
+.paginado .lista button:hover{
+  background-color: var(--second-color);
+  color: var(--bc-body-color);
+  border: 1px solid var(--second-color);
+  
+  
+}
+
+.paginado .lista .botones{
+  margin-top: 200px;
+}
+
+.paginado .lista{
+  margin: auto;
+  /* background-color: var(--second-color); */
+  padding: 30px;
+}
+
+/* ==================CREATE-RECIPE======================*/
+
+.create-recipe{
+  padding: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  justify-content: space-between;
+  height: 100vh;
+  gap: 20px;
+  width: 100%;
+  /* background-color: red; */
+}
+
+.create-recipe .form-recipe{
+  border: 1px solid var(--second-color);
+  border-radius: 5px;
+  background-color: var(--bc-body-color);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 10px; */
+}
+
+.create-recipe .form-recipe .image{
+  /* gap: 40px; */
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-recipe .form-recipe .image input{
+  /* gap: 40px; */
+  border-radius: 5px;
+  background-color: lightgrey;
+  outline: none;
+  border: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+
+.create-recipe .form-recipe label{
+  font-size: 20px;
+  
+}
+
+.create-recipe .form-recipe h1{
+  font-size: 25px;
+  
+}
+
+.create-recipe .form-recipe label{
+  font-size: 15px;
+  
+}
+
+.create-recipe a{
+  padding: 10px;
+  height: 50px;
+  border: 1px solid var(--second-color);
+  color: var(--second-color);
+  border-radius: 5px;
+  font-weight: 500;
+  transition: 500ms;
+}
+
+.create-recipe a:hover{
+  background-color: var(--second-color);
+  color: var(--bc-body-color);
+  border: 1px solid var(--second-color);
+  box-shadow:  0px 5px 25px -10px #FDD69B;
+}
+
+
+/*================PREVIEW===================*/
+
+.preview-bc{
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: #1a1d22;
+  border-radius: 5px;
+}
+
+.preview-bc  h2{
+  font-size: 25px;
+}
+
+.preview-bc span{
+  font-size: 15px;
 }

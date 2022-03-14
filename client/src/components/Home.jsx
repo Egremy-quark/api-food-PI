@@ -5,7 +5,8 @@ import Paginado from "./Paginado.jsx";
 import RecipePerPage from './RecipePerPage.jsx'
 import NavBar from "./NavBar.jsx";
 import Filters from "./Filters.jsx";
-import elTrucoDelAlmendruco from "../elTrucoDelAlmendruco.js";
+import { Link } from "react-router-dom";
+// import elTrucoDelAlmendruco from "../elTrucoDelAlmendruco.js";
 
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
 
     return (
         <div className="home">
+            <Link to='/recipes' >Create Your Recipe</Link>
             <div >
                 <NavBar
                     page={page}

@@ -18,6 +18,7 @@ export default function RecipePerPage({ recipesCopied, currentPage }) {
                         diets={e.diets}
                         key={e.id}
                         id={e.id}
+                        mandeOnDb={e.mandeOnDb}
                     />
                 })}
             </div>

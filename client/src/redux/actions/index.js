@@ -5,7 +5,7 @@ export const getRecipes = () => {
     return async (dispatch) => {
         try {
             let json = await axios.get('http://localhost:3001/recipes');
-            console.log(json.data)
+            // console.log(json.data)
             return dispatch({
                 type: 'GET_RECIPES',
                 payload: json.data
@@ -78,7 +78,7 @@ export const filterByScore = (payload) => {
 
 export const postRecipe = (payload) => {
     return async function (dispatch) {
-        let recipeDb = await axios.post('/recipe', payload)
+        let recipeDb = await axios.post('http://localhost:3001/recipes/recipe', payload)
         return recipeDb
     }
 }

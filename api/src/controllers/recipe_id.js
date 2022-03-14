@@ -17,8 +17,9 @@ const getIdApi = async (id) => {
             points: e.spoonacularScore,
             healthScore: e.healthScore,
             servings: e.servings,
+            madeOnDb: false,
             image: e.image,
-            diets: e.diets.map((e) => { return { name: e } }),
+            diets: e.diets,
             steps: e.analyzedInstructions[0]?.steps.map((e) => { return e.step })
         };
 
