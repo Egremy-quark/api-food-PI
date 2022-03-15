@@ -11,7 +11,7 @@ export default function RecipeDetails() {
     let newRecipe = useSelector((state) => state.detail)
     // let newRecipe = detallesDelAlmedruco[0];
 
-
+    console.log(newRecipe)
     useEffect(() => {
         dispatch(getDetails(recipeId.id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,9 +19,9 @@ export default function RecipeDetails() {
 
     return (
         <div>
-            {console.log({ newRecipe })}
+            {console.log(newRecipe)}
             <Link to='/home'><button>A casita</button></Link>
-            <div>
+            <div className='recipeDetail'>
                 {
                     (newRecipe.length === 0) ?
                         <div>
@@ -33,10 +33,18 @@ export default function RecipeDetails() {
                             <div>
                                 <h1>{newRecipe.title}</h1>
                                 <h5><span>Diet Type:</span></h5>
-                                <p>{newRecipe.diets?.map((r, i) => (
-                                    <li key={i.toString()}> {r.name}</li>
-                                ))}
-                                </p>
+                                {
+
+                                    newRecipe.diets.map((e, i) => {
+                                        console.log(e)
+                                        return <p key={i}>
+                                            {e}
+                                        </p>
+
+                                    })
+                                }
+
+
                                 <h5> <span>Servings:</span>{newRecipe.servings} </h5>
                                 <h5> <span>Spoonacular Score:</span>{newRecipe.points} </h5>
                                 <h5> <span>Health Score:</span>{newRecipe.healthScore} </h5>

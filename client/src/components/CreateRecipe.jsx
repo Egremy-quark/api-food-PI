@@ -183,7 +183,7 @@ export default function CreateRecipe() {
                         />
                         {/* {errors.image && (<p>{errors.image}</p>)} */}
                     </div>
-                    <div >
+                    <div className='image' >
                         <label>Title: </label>
                         <input
                             type="text"
@@ -193,7 +193,7 @@ export default function CreateRecipe() {
                         />
                         {/* {errors.title && (<p>{errors.title}</p>)} */}
                     </div>
-                    <div>
+                    <div className='image'>
                         <label>Summary: </label>
                         <textarea
                             type="text"

@@ -16,7 +16,7 @@ const getApiInfo = async () => {
             return {
                 id: e.id,
                 title: e.title,
-                summary: e.summary,
+                summary: e.summary.replace(/<[^>]*>?/g, ''),
                 points: e.spoonacularScore,
                 healthScore: e.healthScore,
                 servings: e.servings,

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { orderByName, filterDiet, filterByScore } from '../redux/actions/index'
+import { orderByName, filterDiet, filterByScore, filterPost } from '../redux/actions/index'
 
-export default function Filters({ ordered }) {
+export default function Filters({ ordered, page }) {
     const dispatch = useDispatch()
     const selectDiet = useSelector(state => state.diets)
 
@@ -24,7 +24,11 @@ export default function Filters({ ordered }) {
         dispatch(filterByScore(e.target.value))
     }
 
-
+    const handleDbOrApi = (e) => {
+        e.preventDefault()
+        page(1)
+        dispatch(filterPost(e.target.value))
+    }
 
     return (
         <div className='filtros'>
@@ -52,6 +56,13 @@ export default function Filters({ ordered }) {
                     <option>Score order</option>
                     <option value='descore'>Ascendent</option>
                     <option value='asc'>Descendent</option>
+                </select>
+
+                <select onChange={(e) => handleDbOrApi(e)} className='order__select'>
+                    <option>Score Db or Api</option>
+                    <option value='All'>All</option>
+                    <option value='Created'>Created</option>
+                    <option value='Api'>Api</option>
                 </select>
             </div>
         </div >

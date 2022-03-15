@@ -42,6 +42,7 @@ export default function Home() {
             <div>
                 <Filters
                     ordered={ordered}
+                    page={page}
                 />
             </div>
             <div>

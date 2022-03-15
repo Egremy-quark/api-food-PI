@@ -31,10 +31,22 @@ function rootReducer(state = initialState, action) {
                 diets: action.payload
             }
         case 'GET_DETAILS':
+            let newArr = []
+            let arrDiet = action.payload;
 
+            if (action.payload[0].hasOwnProperty('MadeOnDb')) {
+
+                arrDiet[0].diets.map((d) => {
+                    newArr.push(d.dietType)
+                })
+
+                arrDiet[0].diets = newArr
+            }
+
+            console.log(arrDiet)
             return {
                 ...state,
-                detail: action.payload
+                detail: arrDiet[0]
             }
         case 'FILTER_BY_DIET':
             const recipes = state.copyRecipes;

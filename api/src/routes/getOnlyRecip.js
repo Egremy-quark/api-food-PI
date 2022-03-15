@@ -39,18 +39,44 @@ router.get('/', async (req, res) => {
 router.get('/:idRecipe', async (req, res) => {
 
     const id = req.params.idRecipe
-    const idNum = parseInt(id);
-    const recipeId = await getIdAll(idNum)
-    // let newIdRecipe = await recipeDetail.filter(e => e.id === parseInt(idRecipe))
+    let idDtb = id
 
+    if (id.length < 7) {
+        idDtb = parseInt(id)
+    }
+
+    // const idNum = parseInt(id);
+    const idRecipe = await getAllInfo()
+    // const recipeId = await getIdAll(idNum)
+    let newIdRecipe = await idRecipe.filter(e => e.id === idDtb)
+
+    // if (e.id === idDtb) {
+    //     console.log('Somos iguales')
+    // } else {
+    //     console.log('No lo somos pputo')
+    // }
+
+
+
+    // res.json(newIdRecipe)
     // console.log(recipeId)
-    !recipeId
+    !newIdRecipe
         ? res.status(404).json("No recipe")
-        : res.status(200).json(recipeId)
+        : res.status(200).json(newIdRecipe)
 
     // res.status(404).send('No ingresaste un ID')
 });
 
+// router.get("/dogs/:id", async (req, res) => {
+//     const id = req.params.id;
+//     let dogsTotal = await getAllDogs();
+//     if (id) {
+//       let dogID = await dogsTotal.filter((el) => el.id == id);
+//       dogID.length
+//         ? res.status(200).json(dogID)
+//         : res.status(404).send("la raza no se encuentra");
+//     }
+//   });
 
 
 

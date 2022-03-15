@@ -45,6 +45,7 @@ export const orderByName = (payload) => {
 }
 
 export const getDetails = (id) => {
+
     return async (dispatch) => {
         try {
             let aboutRecipe = await axios.get(`http://localhost:3001/recipes/${id}`);

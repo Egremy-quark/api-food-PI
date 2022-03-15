@@ -15,9 +15,9 @@ export default function Pagination({ recipesCopied, page }) {
                         {pages.map((e, i) => (
                             <li key={i.toString()}>
                                 <button onClick={() => { page(e) }}>
-                                    <div className='botones'>
-                                        {e}
-                                    </div>
+
+                                    {e}
+
                                 </button>
                             </li>
                         ))}

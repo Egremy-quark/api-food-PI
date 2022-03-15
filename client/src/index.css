@@ -262,7 +262,7 @@ li {
 .paginado .lista button{
   width: 40px;
   height: 40px;
-  padding-bottom: -8px;
+  padding-bottom: 1px;
   background-color: var(--bc-body-color);
   color: var(--second-color);
   border: 1px solid var(--second-color);
@@ -282,9 +282,6 @@ li {
   
 }
 
-.paginado .lista .botones{
-  margin-top: 200px;
-}
 
 .paginado .lista{
   margin: auto;
@@ -312,7 +309,7 @@ li {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  
   /* gap: 10px; */
 }
 
@@ -383,4 +380,22 @@ li {
 
 .preview-bc span{
   font-size: 15px;
+}
+
+
+/*================RECIPE-DETAIL===================*/
+
+.recipeDetail{
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1d22;
+  padding: 60px;
+  
+}
+
+.recipeDetail img{
+  border-radius: 8px;
+  border: 2px solid var(--second-color);
+  display: flex;
+  
 }
